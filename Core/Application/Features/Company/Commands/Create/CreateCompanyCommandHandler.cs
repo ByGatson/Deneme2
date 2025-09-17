@@ -26,6 +26,7 @@ namespace Application.Features.Company.Commands.Create
 
             await _unitOfWork.CompanyRepository.AddAsync(company);
             var result = await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _redis.SetAsync("companyId", company.Id);
             return result > 0;
         }
     }

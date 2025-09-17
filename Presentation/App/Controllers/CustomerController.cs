@@ -1,5 +1,8 @@
 ﻿using Application.Features.Customer.Commands.Create;
+using Application.Features.Customer.Request.GetAll;
+using Application.Features.Customer.Request.GetAllById;
 using Application.Result;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +35,18 @@ namespace App.Controllers
         {
             var response = await _mediatR.Send(new DeleteCustomerCommand(id));
             return Ok(Result<bool>.Success(response));
+        }
+        [HttpGet, Route("getall")]
+        public async Task<IActionResult> GetAll()
+        {
+            var response = await _mediatR.Send(new GetAllCustomerRequest());
+            return Ok(Result<List<Customer>>.Success(response));
+        }
+        [HttpGet, Route("getbyid/id")]
+        public async Task<IActionResult> GetAllById(string id)
+        {
+            var response = await _mediatR.Send(new GetAllByIdCustomerRequest(id));
+            return Ok(Result<List<Customer>>.Success(response));
         }
     }
 }

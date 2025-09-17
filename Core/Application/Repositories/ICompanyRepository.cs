@@ -4,6 +4,6 @@ namespace Application.Repositories
 {
     public interface ICompanyRepository : IRepository<Company>
     {
-        public Task<List<Company>> GetAllByIdAsync(string userId);
+        public Task<List<Company>> GetAllByUserIdAsync(string userId);
     }
 }

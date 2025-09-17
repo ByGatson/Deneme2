@@ -2,6 +2,7 @@ using App.Middlewares.ExceptionMiddleware;
 using Application.Mappings.AppUserMap;
 using Application.Mappings.CompanyMap;
 using Application.Mappings.CustomerMap;
+using Application.Mappings.ProductMap;
 using Persistence.Extensions;
 using System.Reflection;
 
@@ -20,6 +21,8 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<AppUserProfile>());
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<CompanyProfile>());
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<CustomerProfile>());
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ProductProfile>());
+
 
 builder.Services.AddMemoryCache();
 var app = builder.Build();

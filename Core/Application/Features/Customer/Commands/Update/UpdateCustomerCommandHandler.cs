@@ -18,10 +18,13 @@ namespace Application.Features.Customer.Commands.Create
         public async Task<bool> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
             var customer = await _unitOfWork.CustomerRepository.FindByIdAsync(request.Id);
-            if (customer is null) throw new EntityIsNotFoundException("Customer bulunamadı");
+            if (customer is null)
+                throw new EntityIsNotFoundException("Customer bulunamadı");
 
-            var updatedCustomer = _mapper.Map<Domain.Entities.Company>(request);
-            _unitOfWork.CompanyRepository.Update(updatedCustomer);
+            // Mevcut customer üzerinden update yap
+            _mapper.Map(request, customer);
+
+            _unitOfWork.CustomerRepository.Update(customer);
             var result = await _unitOfWork.SaveChangesAsync(cancellationToken);
             return result > 0;
         }

@@ -19,11 +19,11 @@ namespace Application.Features.Company.Request.GetAll
         public async Task<List<Domain.Entities.Company>> Handle(GetAllCompanyRequest request, CancellationToken cancellationToken)
         {
             var cacheResult = _memoryCache.Get("companyList");
-            if (cacheResult is null)
-            {
-                cacheResult = await _unitOfWork.CompanyRepository.GetAll();
-                _memoryCache.Set("companyList", cacheResult);
-            }
+
+
+            cacheResult = await _unitOfWork.CompanyRepository.GetAll();
+            _memoryCache.Set("companyList", cacheResult);
+
             return (List<Domain.Entities.Company>)cacheResult;
         }
     }

@@ -42,8 +42,8 @@ namespace App.Controllers
             var response = await _mediatR.Send(new GetAllCompanyRequest());
             return Ok(Result<List<Company>>.Success(response));
         }
-        [HttpGet, Route("getallbyid/id")]
-        public async Task<IActionResult> GetAllById(string id)
+        [HttpGet, Route("getallbyuserid/id")]
+        public async Task<IActionResult> GetAllByUserId(string id)
         {
             var response = await _mediatR.Send(new GetAllByIdRequest(id));
             return Ok(Result<List<Company>>.Success(response));

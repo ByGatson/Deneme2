@@ -14,7 +14,7 @@ namespace Application.Features.Company.Request.GetAllById
 
         public async Task<List<Domain.Entities.Company>> Handle(GetAllByIdRequest request, CancellationToken cancellationToken)
         {
-            var response = await _unitOfWork.CompanyRepository.GetAllByIdAsync(request.userId);
+            var response = await _unitOfWork.CompanyRepository.GetAllByUserIdAsync(request.userId);
             return response;
         }
     }

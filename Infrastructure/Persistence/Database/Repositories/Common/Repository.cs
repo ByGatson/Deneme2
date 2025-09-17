@@ -7,7 +7,7 @@ using Persistence.Database.Context;
 
 namespace Persistence.Database.Repositories.Common
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly ECommerceDbContext _context;
 
@@ -17,7 +17,7 @@ namespace Persistence.Database.Repositories.Common
         }
 
         private DbSet<TEntity> Table => _context.Set<TEntity>();
-        public async Task<List<TEntity>> GetAll() => await Table.ToListAsync();
+        public abstract Task<List<TEntity>> GetAll();
         public async Task<EntityEntry<TEntity>> AddAsync(TEntity entity) => await Table.AddAsync(entity);
         public async Task<EntityEntry<TEntity>> RemoveAsync(string id)
         {
