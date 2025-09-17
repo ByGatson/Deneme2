@@ -17,10 +17,7 @@ namespace Infrastructure.ExternalServices.Redis
             await _database.StringSetAsync(key, value, expiry);
         }
 
-        public async Task<string> GetAsync(string key)
-        {
-            return await _database.StringGetAsync(key);
-        }
+        public async Task<string> GetAsync(string key) => await _database.StringGetAsync(key);
 
         public async Task RemoveAsync(string key)
         {

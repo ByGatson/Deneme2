@@ -8,6 +8,7 @@ namespace Application.Repositories
         Task<List<TEntity>> GetAll();
         Task<EntityEntry<TEntity>> AddAsync(TEntity entity);
         EntityEntry<TEntity> Update(TEntity entity);
-        Task<EntityEntry<TEntity>> RemoveAsync(int id);
+        Task<EntityEntry<TEntity>> RemoveAsync(string id);
+        Task<TEntity> FindByIdAsync(string id);
     }
 }
