@@ -22,6 +22,8 @@ namespace Persistence.Extensions
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             //services.AddDbContext<TestDbContext>(options => options.UseMySql(configuration.GetConnectionString("MySQLConnection"), new MySqlServerVersion("8,0,0")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }

@@ -17,7 +17,8 @@ namespace Persistence.Database.Context
         public DbSet<Company> Companies { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -39,9 +40,7 @@ namespace Persistence.Database.Context
                 .HasOne(u => u.Company)
                 .WithOne(c => c.User)
                 .HasForeignKey<AppUser>(u => u.CompanyId) // foreign key AppUser tarafında
-                .OnDelete(DeleteBehavior.Cascade);
-
-
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Company - Customer (N-M)
             builder.Entity<Company>()

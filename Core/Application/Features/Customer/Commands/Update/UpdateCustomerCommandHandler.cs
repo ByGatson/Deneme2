@@ -21,7 +21,6 @@ namespace Application.Features.Customer.Commands.Create
             if (customer is null)
                 throw new EntityIsNotFoundException("Customer bulunamadı");
 
-            // Mevcut customer üzerinden update yap
             _mapper.Map(request, customer);
 
             _unitOfWork.CustomerRepository.Update(customer);

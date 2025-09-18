@@ -174,7 +174,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
@@ -198,7 +198,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Domain.Entities.Company", b =>
@@ -426,7 +426,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Company", "Company")
                         .WithOne("User")
                         .HasForeignKey("Domain.Entities.Auth.AppUser", "CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Company");
                 });

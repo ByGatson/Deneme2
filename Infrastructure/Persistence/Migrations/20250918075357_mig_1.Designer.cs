@@ -12,8 +12,8 @@ using Persistence.Database.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20250917194230_mig_6")]
-    partial class mig_6
+    [Migration("20250918075357_mig_1")]
+    partial class mig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,7 +177,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
@@ -201,7 +201,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Domain.Entities.Company", b =>
@@ -429,7 +429,7 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Company", "Company")
                         .WithOne("User")
                         .HasForeignKey("Domain.Entities.Auth.AppUser", "CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Company");
                 });

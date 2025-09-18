@@ -37,5 +37,7 @@ namespace Persistence.Database.Repositories
             var result = await _context.Products.Where(c => c.Id == id).ToListAsync();
             return result;
         }
+
+        public async Task<Product> GetByIdAsync(string Id) => await _context.Products.FindAsync(Id);
     }
 }
